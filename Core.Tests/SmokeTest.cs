@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace Core.Tests
 {
     [TestFixture]
-    public class NUnitTest1
+    public class SmokeTest
     {
         private Burner _burner;
 
