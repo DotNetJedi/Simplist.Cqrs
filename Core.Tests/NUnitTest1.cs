@@ -9,16 +9,26 @@ namespace Core.Tests
     [TestFixture]
     public class NUnitTest1
     {
-        [Test]
-        public void TestMethod1()
+        private Burner _burner;
+
+        [SetUp]
+        public void Setup()
         {
-            var burner = new Burner();
+            _burner = new Burner();
+        }
 
-            burner.Should().NotBeNull();
-
-            var result = burner.Smoke("test");
-
+        [Test]
+        public void Smoke_test_should_work()
+        {
+            var result = _burner.Smoke("test");
             result.Should().Be("test smoked");
+        }
+
+        [Test]
+        public void Smoke_should_validate_for_null()
+        {
+            _burner.Invoking(_ => _.Smoke(null))
+                .ShouldThrow<ArgumentNullException>();
         }
     }
 }
