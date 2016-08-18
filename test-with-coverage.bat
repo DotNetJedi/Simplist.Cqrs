@@ -17,7 +17,7 @@ del /Q /S Reports
 call %OPENCOVER% -register:user "-target:%NUNIT%" "-targetargs:%TEST_TARGETS% --result:Reports\TestResults.xml;format=nunit2" -output:Reports\OpenCover.xml -filter:"%NAMESPACE_FILTERS%" -excludebyattribute:%ATTRIBUTE_FILTERS%
 
 rem to enable code coverage uncomment the two following lines
-call %TOCOBERTURA% -input:Reports\OpenCover.xml -output:Reports\cobertura.xml -sources:.
+call %TOCOBERTURA% -input:Reports\OpenCover.xml -output:Reports\cobertura.xml -sources:%~dp0
 call %REPORT_GEN% -reports:Reports\OpenCover.xml -targetdir:Reports\Coverage\Server
 
 rem call .\node_modules\.bin\karma.cmd start karma-jenkins.conf.js
