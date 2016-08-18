@@ -10,16 +10,16 @@ set REPORT_GEN=packages\ReportGenerator.2.4.5.0\tools\ReportGenerator.exe
 set TOCOBERTURA=packages\OpenCoverToCoberturaConverter.0.2.4.0\tools\OpenCoverToCoberturaConverter.exe
 set TEST_TARGETS=Core.Tests\bin\%BUILD_TARGET%\Simplist.Core.Tests.dll
 set NAMESPACE_FILTERS=+[*]* -[FluentAssertions*]*
-set ATTRIBUTE_FILTERS=*GeneratedCode*
+set ATTRIBUTE_FILTERS=*GeneratedCode*;*TestFixture*
 set
 
 mkdir Reports\Coverage
 del /Q /S Reports
 
 @echo ================================================================================
-@echo call %OPENCOVER% -register:user "-target:%NUNIT%" "-targetargs:%TEST_TARGETS% --result:Reports\TestResults.xml;format=nunit2" -output:Reports\OpenCover.xml -filter:"%NAMESPACE_FILTERS%" -excludebyattribute:"%ATTRIBUTE_FILTERS%"
+@echo call %OPENCOVER% -register:user "-target:%NUNIT%" "-targetargs:%TEST_TARGETS% --result:Reports\TestResults.xml;format=nunit2" -output:Reports\OpenCover.xml -filter:"%NAMESPACE_FILTERS%" -excludebyattribute:%ATTRIBUTE_FILTERS%
 @echo --------------------------------------------------------------------------------
-call %OPENCOVER% -register:user "-target:%NUNIT%" "-targetargs:%TEST_TARGETS% --result:Reports\TestResults.xml;format=nunit2" -output:Reports\OpenCover.xml -filter:"%NAMESPACE_FILTERS%" -excludebyattribute:"%ATTRIBUTE_FILTERS%"
+call %OPENCOVER% -register:user "-target:%NUNIT%" "-targetargs:%TEST_TARGETS% --result:Reports\TestResults.xml;format=nunit2" -output:Reports\OpenCover.xml -filter:"%NAMESPACE_FILTERS%" -excludebyattribute:%ATTRIBUTE_FILTERS%
 
 rem to enable code coverage uncomment the two following lines
 @echo ================================================================================
