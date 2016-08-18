@@ -12,11 +12,11 @@ namespace Core.Tests
         [Test]
         public void TestMethod1()
         {
-            var class1 = new Class1();
+            var burner = new Burner();
 
-            class1.Should().NotBeNull();
+            burner.Should().NotBeNull();
 
-            var result = class1.Smoke("test");
+            var result = burner.Smoke("test");
 
             result.Should().Be("test smoked");
         }

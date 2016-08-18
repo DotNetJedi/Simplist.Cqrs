@@ -1,6 +1,6 @@
 ﻿namespace Simplist.Cqrs.Core
 {
-    public class Class1
+    public class Burner
     {
         public string Smoke(string target)
         {
