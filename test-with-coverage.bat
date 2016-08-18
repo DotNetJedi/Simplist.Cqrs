@@ -1,3 +1,4 @@
+@echo off
 setlocal
 
 if "%BUILD_CONFIGURATION%" == "" set BUILD_CONFIGURATION=Debug
@@ -10,14 +11,25 @@ set TOCOBERTURA=packages\OpenCoverToCoberturaConverter.0.2.4.0\tools\OpenCoverTo
 set TEST_TARGETS=Core.Tests\bin\%BUILD_TARGET%\Simplist.Core.Tests.dll
 set NAMESPACE_FILTERS=+[*]* -[FluentAssertions*]*
 set ATTRIBUTE_FILTERS=*GeneratedCode*
+set
 
 mkdir Reports\Coverage
 del /Q /S Reports
 
-call %OPENCOVER% -register:user "-target:%NUNIT%" "-targetargs:%TEST_TARGETS% --result:Reports\TestResults.xml;format=nunit2" -output:Reports\OpenCover.xml -filter:"%NAMESPACE_FILTERS%" -excludebyattribute:%ATTRIBUTE_FILTERS%
+@echo ================================================================================
+@echo call %OPENCOVER% -register:user "-target:%NUNIT%" "-targetargs:%TEST_TARGETS% --result:Reports\TestResults.xml;format=nunit2" -output:Reports\OpenCover.xml -filter:"%NAMESPACE_FILTERS%" -excludebyattribute:"%ATTRIBUTE_FILTERS%"
+@echo --------------------------------------------------------------------------------
+call %OPENCOVER% -register:user "-target:%NUNIT%" "-targetargs:%TEST_TARGETS% --result:Reports\TestResults.xml;format=nunit2" -output:Reports\OpenCover.xml -filter:"%NAMESPACE_FILTERS%" -excludebyattribute:"%ATTRIBUTE_FILTERS%"
 
 rem to enable code coverage uncomment the two following lines
+@echo ================================================================================
+@echo call %TOCOBERTURA% -input:Reports\OpenCover.xml -output:Reports\cobertura.xml -sources:%~dp0
+@echo --------------------------------------------------------------------------------
 call %TOCOBERTURA% -input:Reports\OpenCover.xml -output:Reports\cobertura.xml -sources:%~dp0
+
+@echo ================================================================================
+@echo call %REPORT_GEN% -reports:Reports\OpenCover.xml -targetdir:Reports\Coverage\Server
+@echo --------------------------------------------------------------------------------
 call %REPORT_GEN% -reports:Reports\OpenCover.xml -targetdir:Reports\Coverage\Server
 
 rem call .\node_modules\.bin\karma.cmd start karma-jenkins.conf.js
