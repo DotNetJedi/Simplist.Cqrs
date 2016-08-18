@@ -15,6 +15,10 @@ namespace Core.Tests
             var class1 = new Class1();
 
             class1.Should().NotBeNull();
+
+            var result = class1.Smoke("test");
+
+            result.Should().Be("test smoked");
         }
     }
 }
