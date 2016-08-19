@@ -7,7 +7,7 @@ namespace Simplist.Cqrs.Core.Domain
     {
         private readonly List<DomainEvent> _changes = new List<DomainEvent>();
 
-        public abstract Guid Id { get; set; }
+        public virtual Guid Id { get; internal set; }
 
         //public IEnumerable<DomainEvent> GetPendingEvents()
         //{

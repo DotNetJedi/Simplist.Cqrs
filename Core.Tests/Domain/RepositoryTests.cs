@@ -11,16 +11,36 @@ namespace Simplist.Core.Domain
     [TestFixture]
     public class RepositoryTests
     {
+        private Guid _id;
+        private Mock<IEventStore> _storeMock;
+
+        [SetUp]
+        public void Setup()
+        {
+            _id = GuidMaker.Get(1);
+            _storeMock = new Mock<IEventStore>();
+        }
+
         [Test]
         public void Repository_should_assign_id()
         {
-            var id = GuidMaker.Get(1);
-            var storeMock = new Mock<IEventStore>();
-            var repository = new Repository<Entity>(storeMock.Object);
+            var repository = new Repository<Entity>(_storeMock.Object);
+            var eventSourced = repository.Get(_id);
+            eventSourced.Id.Should().Be(_id);
+        }
 
-            var eventSourced = repository.Get(id);
+        [Test]
+        public void Repository_should_reload_from_events()
+        {
+            _storeMock.Setup(m => m.GetEvents(_id))
+                .Returns(new[]
+                {
+                    new Mock<DomainEvent>().Object, 
+                });
 
-            eventSourced.Id.Should().Be(id);
+            var repository = new Repository<Entity>(_storeMock.Object);
+            repository.Get(_id);
+            _storeMock.Verify(m => m.GetEvents(_id), Times.Once);
         }
     }
 
@@ -29,7 +49,5 @@ namespace Simplist.Core.Domain
         public Entity()
         {
         }
-
-        public override Guid Id { get; set; }
     }
 }
