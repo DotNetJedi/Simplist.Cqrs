@@ -42,8 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Burner.cs" />
+    <Compile Include="Domain\DomainEvent.cs" />
+    <Compile Include="Domain\EventSourcedBase.cs" />
+    <Compile Include="Domain\IEventStore.cs" />
+    <Compile Include="Domain\Repository.cs" />
+    <Compile Include="IDomainMessage.cs" />
+    <Compile Include="IEventSourced.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

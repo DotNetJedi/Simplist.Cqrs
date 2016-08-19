@@ -1,10 +1,9 @@
 ﻿using System;
 using FluentAssertions;
+using NUnit.Framework;
 using Simplist.Cqrs.Core;
 
-using NUnit.Framework;
-
-namespace Core.Tests
+namespace Simplist.Core
 {
     [TestFixture]
     public class SmokeTest
