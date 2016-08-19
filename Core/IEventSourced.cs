@@ -7,6 +7,6 @@ namespace Simplist.Cqrs.Core
     public interface IEventSourced
     {
         Guid Id { get; }
-        IEnumerable<DomainEvent> GetPendingEvents();
+        //IEnumerable<DomainEvent> GetPendingEvents();
     }
 }

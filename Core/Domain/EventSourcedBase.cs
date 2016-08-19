@@ -9,9 +9,9 @@ namespace Simplist.Cqrs.Core.Domain
 
         public abstract Guid Id { get; set; }
 
-        public IEnumerable<DomainEvent> GetPendingEvents()
-        {
-            return _changes;
-        }
+        //public IEnumerable<DomainEvent> GetPendingEvents()
+        //{
+        //    return _changes;
+        //}
     }
 }

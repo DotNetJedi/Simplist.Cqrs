@@ -9,10 +9,10 @@ namespace Simplist.Cqrs.Core.Domain
             
         }
 
-        public void Save(T eventSourced)
-        {
-            throw new NotImplementedException();
-        }
+        //public void Save(T eventSourced)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public T Get(Guid id)
         {
