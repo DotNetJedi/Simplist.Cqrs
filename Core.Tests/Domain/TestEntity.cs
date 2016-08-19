@@ -6,10 +6,6 @@ namespace Simplist.Core.Domain
     {
         private bool _isApplied;
 
-        public TestEntity()
-        {
-        }
-
         public void Apply(CreateEntityEvent domainEvent)
         {
             _isApplied = Id == domainEvent.Id;

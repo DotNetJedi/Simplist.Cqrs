@@ -45,6 +45,8 @@
     <Compile Include="Domain\DomainEvent.cs" />
     <Compile Include="Domain\EventSourcedBase.cs" />
     <Compile Include="Domain\IEventStore.cs" />
+    <Compile Include="Domain\PrivateReflectionDynamicObject.cs" />
+    <Compile Include="Domain\PrivateReflectionDynamicObjectExtensions.cs" />
     <Compile Include="Domain\Repository.cs" />
     <Compile Include="IDomainMessage.cs" />
     <Compile Include="IEventSourced.cs" />
