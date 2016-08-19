@@ -19,7 +19,8 @@ namespace Simplist.Cqrs.Core.Domain
         public T Get(Guid id)
         {
             var entity = new T { Id = id };
-            _eventStore.GetEvents(id);
+            var domainEvents = _eventStore.GetEvents(id);
+            entity.LoadFromEvents(domainEvents);
             return entity;
         }
     }

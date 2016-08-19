@@ -10,7 +10,7 @@ set REPORT_GEN=packages\ReportGenerator.2.4.5.0\tools\ReportGenerator.exe
 set TOCOBERTURA=packages\OpenCoverToCoberturaConverter.0.2.4.0\tools\OpenCoverToCoberturaConverter.exe
 set TEST_TARGETS=Core.Tests\bin\%BUILD_TARGET%\Simplist.Core.Tests.dll
 set NAMESPACE_FILTERS=+[*]* -[FluentAssertions*]*
-set ATTRIBUTE_FILTERS=*GeneratedCode*;*TestFixture*
+set ATTRIBUTE_FILTERS=*GeneratedCode*;[ExcludeFromCodeCoverage*];[TestFixture]
 set
 
 mkdir Reports\Coverage
