@@ -43,22 +43,6 @@ namespace Simplist.Core.Domain
         }
     }
 
-    public class TestEntity : EventSourcedBase
-    {
-        private bool _isApplied;
-
-        public TestEntity()
-        {
-        }
-
-        public virtual void Apply(CreateEntityEvent domainEvent)
-        {
-            if (domainEvent != null) _isApplied = true;
-        }
-
-        public bool IsApplied() => _isApplied;
-    }
-
     public class CreateEntityEvent : DomainEvent
     {
         public CreateEntityEvent(Guid id) : base(id)
